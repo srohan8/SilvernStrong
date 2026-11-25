@@ -96,14 +96,42 @@
   .admin{display:none;background:#fff8e1;border:2px dashed var(--saffron);border-radius:14px;padding:18px;margin-top:20px;color:var(--ink)}
   .admin.show{display:block}
 
+  /* ---- Photos: drop files into /images using the names shown on each placeholder ---- */
+  .photo{position:relative;margin:0;overflow:hidden;border-radius:var(--radius);background:linear-gradient(135deg,#f6e7c8,#dfeacf)}
+  .photo .ph{position:absolute;inset:12px;border:2px dashed rgba(29,92,99,.35);border-radius:calc(var(--radius) - 6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px;color:var(--teal-dark)}
+  .photo .ph b{font-size:1rem}
+  .photo .ph span{font:600 .8rem ui-monospace,Consolas,monospace;background:rgba(255,255,255,.7);padding:2px 8px;border-radius:6px}
+  .photo .ph em{font-size:.85rem;color:var(--muted);font-style:normal;max-width:22em}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .r-wide{aspect-ratio:4/3}.r-card{aspect-ratio:16/10}.r-tall{aspect-ratio:4/5}
+
+  .hero{position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:rgba(233,162,59,.16);right:-140px;top:-160px}
+  .hero::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(79,125,69,.10);left:-90px;bottom:-110px}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-visual .photo{box-shadow:0 18px 40px rgba(31,42,46,.16)}
+  .hero-visual .hero-card{position:relative;margin:-56px 20px 0}
+  .btn{box-shadow:0 6px 16px rgba(20,67,73,.18)}
+  .card{box-shadow:0 6px 18px rgba(31,42,46,.05);transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(31,42,46,.10)}
+  .card.has-photo{padding:0 0 28px;overflow:hidden}
+  .card.has-photo .photo{border-radius:0}
+  .card.has-photo .ic{display:none}
+  .card.has-photo > :not(figure){margin-inline:28px}
+  .card.has-photo figure + *{margin-top:22px}
+  .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
+  .split .why{grid-template-columns:1fr;gap:20px}
+
   @media (max-width:860px){
+    .split{grid-template-columns:1fr}
+    .hero-visual .hero-card{margin:-40px 12px 0}
     body{font-size:19px}
     section{padding-block:48px}
     .hero .grid,.signup .grid,.three,.three.two,.why{grid-template-columns:1fr}
     .row2,.opts{grid-template-columns:1fr}
     .hide-sm{display:none}
   }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}.card:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -120,15 +148,17 @@
 <section class="hero">
   <div class="wrap grid">
     <div>
-      <span class="pill">For families in South Bangalore · Online sessions first, club to follow</span>
+      <span class="pill">For families in Bangalore · Online sessions first, club to follow</span>
       <h1>Help your parents stay strong, healthy and happy.</h1>
       <p class="lead">Silver &amp; Strong is a gym and community club made just for people aged 50 and above: safe strength training designed by physiotherapists, wholesome home-style meals, and friends of their own age. We start with live online sessions that we help you set up for them in minutes.</p>
       <div class="cities" aria-label="Launching in">
-        <span>📍 South Bangalore</span>
+        <span>📍 Bangalore</span>
       </div>
       <a class="btn" href="#join">Join the waitlist</a>
       <p class="fine" style="margin-top:14px">Free to join. Early families get the best rates. No payment needed. For you, your parents, or anyone 50+ you care about.</p>
     </div>
+    <div class="hero-visual">
+    <figure class="photo r-wide"><div class="ph"><b>📷 Add photo</b><span>images/hero.jpg</span><em>Older adults laughing together after a group class</em></div><img src="images/hero.jpg" alt="Older adults laughing together after a group exercise class" onerror="this.remove()"></figure>
     <aside class="hero-card" aria-label="A sample day">
       <h3>A day for your parent</h3>
       <ul>
@@ -139,6 +169,7 @@
         <li><span class="t">4:30</span><span>Life-story circle, or tea with younger friends</span></li>
       </ul>
     </aside>
+    </div>
   </div>
 </section>
 
@@ -149,19 +180,22 @@
       <p class="lead">The three things that matter most for your parents' health, in one safe, friendly place with seats everywhere, bright rooms and familiar faces.</p>
     </div>
     <div class="three">
-      <article class="card">
+      <article class="card has-photo">
+        <figure class="photo r-card"><div class="ph"><b>📷 Add photo</b><span>images/move.jpg</span><em>Seniors in a chair yoga or light strength class</em></div><img src="images/move.jpg" alt="Seniors in a gentle chair yoga class" loading="lazy" onerror="this.remove()"></figure>
         <div class="ic" aria-hidden="true">🧘</div>
         <h3>Move</h3>
         <p>Low-impact strength and mobility programmes designed by a physiotherapist and led by coaches trained to work with seniors.</p>
         <ul><li>Chair yoga &amp; pranayama</li><li>Balance &amp; fall-prevention</li><li>Light strength training</li><li>Morning walks &amp; tai chi</li></ul>
       </article>
-      <article class="card">
+      <article class="card has-photo">
+        <figure class="photo r-card"><div class="ph"><b>📷 Add photo</b><span>images/eat.jpg</span><em>Older people sharing a healthy lunch at a table</em></div><img src="images/eat.jpg" alt="Older people sharing a healthy lunch together" loading="lazy" onerror="this.remove()"></figure>
         <div class="ic" aria-hidden="true">🥗</div>
         <h3>Eat</h3>
         <p>Nourishing, tasty meals that feel like home, planned with a dietitian.</p>
         <ul><li>Fresh, low-oil, low-salt lunches</li><li>Protein-rich, easy to chew</li><li>Diabetes &amp; BP friendly options</li><li>Cooking circles &amp; recipe swaps</li></ul>
       </article>
-      <article class="card">
+      <article class="card has-photo">
+        <figure class="photo r-card"><div class="ph"><b>📷 Add photo</b><span>images/belong.jpg</span><em>Friends playing cards or chatting over chai in a lounge</em></div><img src="images/belong.jpg" alt="Friends playing cards and chatting over tea" loading="lazy" onerror="this.remove()"></figure>
         <div class="ic" aria-hidden="true">☕</div>
         <h3>Belong</h3>
         <p>A second living room where everyone knows your name.</p>
@@ -175,7 +209,7 @@
   <div class="wrap">
     <div class="center" style="margin-bottom:36px">
       <h2>Start from home. Grow into a club.</h2>
-      <p class="lead">Silver &amp; Strong is hybrid. We begin with online sessions your parents can join from their own sofa, then open our club in South Bangalore. Online members stay part of it all.</p>
+      <p class="lead">Silver &amp; Strong is hybrid. We begin with online sessions your parents can join from their own sofa, then open our club in Bangalore. Online members stay part of it all.</p>
     </div>
     <div class="three">
       <article class="card">
@@ -204,7 +238,7 @@
         <ul>
           <li>Movement studio, community kitchen and lounge</li>
           <li>Daily programme, with classes streamed for online members</li>
-          <li>South Bangalore first, around Vijaya Bank Layout</li>
+          <li>Around Vijaya Bank Layout, Bangalore</li>
         </ul>
       </article>
     </div>
@@ -214,6 +248,8 @@
 <section class="alt-bg">
   <div class="wrap">
     <h2 class="center" style="margin-bottom:36px">Why families choose us</h2>
+    <div class="split">
+    <figure class="photo r-tall"><div class="ph"><b>📷 Add photo</b><span>images/family.jpg</span><em>An adult son or daughter smiling with their parent</em></div><img src="images/family.jpg" alt="An adult daughter smiling with her mother" loading="lazy" onerror="this.remove()"></figure>
     <div class="why">
       <div><span class="tick">✓</span><p><b>Peace of mind for you</b>A simple update for the family on how your parent is doing, how often they attend, and how their strength is improving, wherever you live.</p></div>
       <div><span class="tick">✓</span><p><b>Safe, physio-designed training</b>Every member gets a simple check-in with our physiotherapy team, and a programme matched to their body. First-aid ready, with a quiet corner whenever you need one.</p></div>
@@ -221,19 +257,22 @@
       <div><span class="tick">✓</span><p><b>Close to home</b>Neighbourhood locations that are easy to reach, with step-free access and clean restrooms.</p></div>
       <div><span class="tick">✓</span><p><b>Their pace, their choice</b>They can come for a class, for lunch, or just for chai. Nobody is pushed.</p></div>
     </div>
+    </div>
   </div>
 </section>
 
 <section id="stories">
   <div class="wrap">
     <div class="three two">
-      <article class="card" style="background:var(--saffron-soft)">
+      <article class="card has-photo" style="background:var(--saffron-soft)">
+        <figure class="photo r-card"><div class="ph"><b>📷 Add photo</b><span>images/stories.jpg</span><em>An elder telling a story to a small attentive circle</em></div><img src="images/stories.jpg" alt="An older man telling a story to a small circle of listeners" loading="lazy" onerror="this.remove()"></figure>
         <div class="ic" aria-hidden="true">📖</div>
         <h3>Life-story sessions</h3>
         <p>Everyone has a story worth hearing. In small, friendly circles, members share memories of childhood, work, marriage, migration, festivals and food, guided by a gentle facilitator.</p>
         <p style="margin:0;color:var(--muted)">Stories can be written down or recorded into a keepsake for your family, if you wish.</p>
       </article>
-      <article class="card" style="background:var(--leaf-soft)">
+      <article class="card has-photo" style="background:var(--leaf-soft)">
+        <figure class="photo r-card"><div class="ph"><b>📷 Add photo</b><span>images/generations.jpg</span><em>A young person and an older person laughing over a phone or recipe</em></div><img src="images/generations.jpg" alt="A young person helping an older person with a phone" loading="lazy" onerror="this.remove()"></figure>
         <div class="ic" aria-hidden="true">🤝</div>
         <h3>Friends of every age</h3>
         <p>Students, young professionals and children visit to listen, learn and play. Elders teach recipes, languages and crafts, and young friends help with phones and apps in return.</p>
@@ -247,7 +286,7 @@
   <div class="wrap grid">
     <div>
       <h2>Join the waitlist</h2>
-      <p class="lead">Tell us a little about who the sessions are for and how to reach you. We will message you first when online sessions begin and when our first South Bangalore club opens. Early families get the best rates.</p>
+      <p class="lead">Tell us a little about who the sessions are for and how to reach you. We will message you first when online sessions begin and when our first Bangalore club opens. Early families get the best rates.</p>
       <p class="lead">Your answers also help us decide the classes, food and fees. Please be honest, there are no wrong answers.</p>
     </div>
 
@@ -417,7 +456,7 @@
     <details><summary>I have joint pain or diabetes. Can I still join?</summary><p>Usually yes, with your doctor's okay. We start with a check-in with our physiotherapy team, keep every exercise gentle, and adjust to what your body allows. We build strength and keep you healthy; we do not provide rehabilitation, so if you are still recovering from surgery or an injury, please finish that with your doctor or physiotherapist first.</p></details>
     <details><summary>Do I need to be fit already?</summary><p>Not at all. Every activity can be done seated or at a gentle pace. We start from where you are.</p></details>
     <details><summary>How much will it cost?</summary><p>We are still deciding, which is why we are asking you. Founding members will get the best rates. Joining the waitlist is free.</p></details>
-    <details><summary>Where exactly will the clubs open?</summary><p>First in South Bangalore, around Vijaya Bank Layout, Bilekahalli and Hulimavu, after we have built the online community. The exact neighbourhoods depend on where most people sign up, so please tell us your area.</p></details>
+    <details><summary>Where exactly will the clubs open?</summary><p>First in Bangalore, around Vijaya Bank Layout, Bilekahalli and Hulimavu, after we have built the online community. The exact neighbourhoods depend on where most people sign up, so please tell us your area.</p></details>
     <details><summary>Can my family visit or take part?</summary><p>Yes. Children and grandchildren are welcome at weekend events and festivals.</p></details>
   </div>
 </section>
