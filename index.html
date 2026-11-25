@@ -21,7 +21,7 @@
   p{margin:0 0 1em}
   a{color:var(--teal)}
   .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
-  section{padding-block:64px}
+  section{padding-block:64px;scroll-margin-top:72px}
   .skip{position:absolute;left:-999px}
   .skip:focus{left:10px;top:10px;background:#fff;padding:10px;z-index:9}
 
@@ -131,6 +131,11 @@
     .hero .grid,.signup .grid,.three,.three.two,.why{grid-template-columns:1fr}
     .row2,.opts{grid-template-columns:1fr}
     .hide-sm{display:none}
+    .top .btn{padding:10px 18px;min-height:44px;font-size:.95rem;white-space:nowrap}
+    .logo{font-size:1.3rem;white-space:nowrap}
+    .hero{padding-block:36px 56px}
+    form{padding:22px 18px}
+    .hero-card{padding:22px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}.card:hover{transform:none}}
 </style>
@@ -149,7 +154,6 @@
 <section class="hero">
   <div class="wrap grid">
     <div>
-      <span class="pill">For families in Bangalore · Online sessions first, club to follow</span>
       <h1>Help your parents stay strong, healthy and happy.</h1>
       <p class="lead">Silver &amp; Strong is a gym and community club made just for people aged 50 and above: safe strength training designed by physiotherapists, wholesome home-style meals, and friends of their own age. We start with live online sessions that we help you set up for them in minutes.</p>
       <div class="cities" aria-label="Launching in">
