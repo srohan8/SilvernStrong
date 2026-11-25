@@ -121,6 +121,7 @@
   .card.has-photo figure + *{margin-top:22px}
   .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
   .split .why{grid-template-columns:1fr;gap:20px}
+  .split.nophoto{grid-template-columns:1fr;max-width:760px;margin-inline:auto}
 
   @media (max-width:860px){
     .split{grid-template-columns:1fr}
@@ -248,8 +249,7 @@
 <section class="alt-bg">
   <div class="wrap">
     <h2 class="center" style="margin-bottom:36px">Why families choose us</h2>
-    <div class="split">
-    <figure class="photo r-tall"><div class="ph"><b>📷 Add photo</b><span>images/family.jpg</span><em>An adult son or daughter smiling with their parent</em></div><img src="images/family.jpg" alt="An adult daughter smiling with her mother" loading="lazy" onerror="this.remove()"></figure>
+    <div class="split nophoto">
     <div class="why">
       <div><span class="tick">✓</span><p><b>Peace of mind for you</b>A simple update for the family on how your parent is doing, how often they attend, and how their strength is improving, wherever you live.</p></div>
       <div><span class="tick">✓</span><p><b>Safe, physio-designed training</b>Every member gets a simple check-in with our physiotherapy team, and a programme matched to their body. First-aid ready, with a quiet corner whenever you need one.</p></div>
