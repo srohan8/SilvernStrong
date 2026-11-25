@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silver &amp; Strong – A club for the young at heart</title>
+<meta name="description" content="Silver & Strong is a neighbourhood club for people 50+ in Bangalore: safe strength training, healthy food and good company. We start with online support sessions. Join the founding waitlist.">
+<style>
+  :root{
+    --ink:#1f2a2e; --muted:#53636a; --bg:#fbf7f0; --card:#ffffff; --line:#e6dccb;
+    --teal:#1d5c63; --teal-dark:#144349; --saffron:#e9a23b; --saffron-soft:#fdf0d8; --leaf:#4f7d45; --leaf-soft:#e8f1e3;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:20px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em;color:var(--teal-dark)}
+  h1{font-size:clamp(2.2rem,5.5vw,3.6rem)}
+  h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+  h3{font-size:1.4rem}
+  p{margin:0 0 1em}
+  a{color:var(--teal)}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+  section{padding-block:64px}
+  .skip{position:absolute;left:-999px}
+  .skip:focus{left:10px;top:10px;background:#fff;padding:10px;z-index:9}
+
+  header.top{position:sticky;top:0;z-index:5;background:rgba(251,247,240,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+  .logo{font:700 1.5rem Georgia,serif;color:var(--teal-dark);text-decoration:none}
+  .logo span{color:var(--saffron)}
+  .btn{display:inline-block;background:var(--teal);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:600 1.05rem inherit;font-family:inherit;text-decoration:none;cursor:pointer;min-height:52px}
+  .btn:hover{background:var(--teal-dark)}
+  .btn.alt{background:var(--saffron);color:#2b1d02}
+  .btn.alt:hover{background:#d78f25}
+  :focus-visible{outline:4px solid var(--saffron);outline-offset:3px}
+
+  .hero{padding-block:56px 72px;background:linear-gradient(180deg,var(--saffron-soft),var(--bg))}
+  .hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .hero p.lead{font-size:1.3rem;color:var(--muted);max-width:34em}
+  .pill{display:inline-block;background:var(--leaf-soft);color:var(--leaf);font-weight:600;border-radius:999px;padding:6px 16px;font-size:.95rem;margin-bottom:18px}
+  .cities{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 28px}
+  .cities span{border:2px solid var(--teal);color:var(--teal);border-radius:999px;padding:6px 16px;font-weight:600;font-size:1rem}
+  .hero-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 10px 30px rgba(31,42,46,.08)}
+  .hero-card h3{margin-bottom:.6em}
+  .hero-card ul{list-style:none;margin:0;padding:0}
+  .hero-card li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start}
+  .hero-card li:first-child{border-top:0}
+  .hero-card .t{font-weight:700;color:var(--teal);min-width:4.4em}
+
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .three.two{grid-template-columns:1fr 1fr}
+  .card .ic{font-size:2.4rem;line-height:1;margin-bottom:12px}
+  .card ul{padding-left:1.2em;margin:.6em 0 0;color:var(--muted)}
+  .center{text-align:center}
+  .center p.lead{max-width:36em;margin-inline:auto;color:var(--muted)}
+
+  .alt-bg{background:var(--leaf-soft)}
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 40px}
+  .why div{display:flex;gap:14px}
+  .why b{display:block}
+  .tick{flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;display:grid;place-items:center;font-weight:700}
+
+  .signup{background:var(--teal-dark);color:#fff}
+  .signup h2{color:#fff}
+  .signup .lead{color:#d6e6e8}
+  .signup .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+  form{background:#fff;color:var(--ink);border-radius:var(--radius);padding:30px}
+  label,legend{display:block;font-weight:600;margin-bottom:6px}
+  .field{margin-bottom:22px}
+  .hint{font-weight:400;color:var(--muted);font-size:.9rem}
+  input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;font:inherit;padding:13px 14px;border:2px solid #bcae95;border-radius:12px;background:#fff;color:var(--ink);min-height:52px}
+  textarea{min-height:90px;resize:vertical}
+  input:focus,select:focus,textarea:focus{border-color:var(--teal);outline:3px solid #b7dde0}
+  fieldset{border:0;padding:0;margin:0 0 22px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .opt{display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font-weight:500;min-height:52px}
+  .opt:has(input:checked){border-color:var(--teal);background:#eaf4f5}
+  .opt input{width:22px;height:22px;accent-color:var(--teal);flex:none}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .err{color:#a3261b;font-size:.95rem;margin-top:6px;display:none}
+  .invalid .err{display:block}
+  .invalid input,.invalid select{border-color:#a3261b}
+  .fine{font-size:.9rem;color:var(--muted);margin-top:14px}
+  .thanks{display:none;text-align:center;padding:20px 6px}
+  .thanks .big{font-size:3rem}
+  .thanks.show{display:block}
+  form.done .formbody{display:none}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;margin-bottom:12px}
+  summary{cursor:pointer;font-weight:600;list-style-position:outside}
+  details p{margin:.8em 0 0;color:var(--muted)}
+
+  footer{padding:36px 0;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+  .admin{display:none;background:#fff8e1;border:2px dashed var(--saffron);border-radius:14px;padding:18px;margin-top:20px;color:var(--ink)}
+  .admin.show{display:block}
+
+  @media (max-width:860px){
+    body{font-size:19px}
+    section{padding-block:48px}
+    .hero .grid,.signup .grid,.three,.three.two,.why{grid-template-columns:1fr}
+    .row2,.opts{grid-template-columns:1fr}
+    .hide-sm{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#join">Skip to sign-up</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">Silver <span>&amp;</span> Strong</a>
+    <a class="btn alt" href="#join">Join the waitlist</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <span class="pill">For families in South Bangalore · Online sessions first, club to follow</span>
+      <h1>Help your parents stay strong, healthy and happy.</h1>
+      <p class="lead">Silver &amp; Strong is a gym and community club made just for people aged 50 and above: safe strength training designed by physiotherapists, wholesome home-style meals, and friends of their own age. We start with live online sessions that we help you set up for them in minutes.</p>
+      <div class="cities" aria-label="Launching in">
+        <span>📍 South Bangalore</span>
+      </div>
+      <a class="btn" href="#join">Join the waitlist</a>
+      <p class="fine" style="margin-top:14px">Free to join. Early families get the best rates. No payment needed. For you, your parents, or anyone 50+ you care about.</p>
+    </div>
+    <aside class="hero-card" aria-label="A sample day">
+      <h3>A day for your parent</h3>
+      <ul>
+        <li><span class="t">9:00</span><span>Gentle movement, chair yoga &amp; stretching</span></li>
+        <li><span class="t">10:30</span><span>Chai, chat &amp; carrom</span></li>
+        <li><span class="t">12:30</span><span>Shared lunch, cooked fresh and light on salt</span></li>
+        <li><span class="t">3:00</span><span>Strength &amp; balance with a trained coach</span></li>
+        <li><span class="t">4:30</span><span>Life-story circle, or tea with younger friends</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:36px">
+      <h2>Strength, good food and good company</h2>
+      <p class="lead">The three things that matter most for your parents' health, in one safe, friendly place with seats everywhere, bright rooms and familiar faces.</p>
+    </div>
+    <div class="three">
+      <article class="card">
+        <div class="ic" aria-hidden="true">🧘</div>
+        <h3>Move</h3>
+        <p>Low-impact strength and mobility programmes designed by a physiotherapist and led by coaches trained to work with seniors.</p>
+        <ul><li>Chair yoga &amp; pranayama</li><li>Balance &amp; fall-prevention</li><li>Light strength training</li><li>Morning walks &amp; tai chi</li></ul>
+      </article>
+      <article class="card">
+        <div class="ic" aria-hidden="true">🥗</div>
+        <h3>Eat</h3>
+        <p>Nourishing, tasty meals that feel like home, planned with a dietitian.</p>
+        <ul><li>Fresh, low-oil, low-salt lunches</li><li>Protein-rich, easy to chew</li><li>Diabetes &amp; BP friendly options</li><li>Cooking circles &amp; recipe swaps</li></ul>
+      </article>
+      <article class="card">
+        <div class="ic" aria-hidden="true">☕</div>
+        <h3>Belong</h3>
+        <p>A second living room where everyone knows your name.</p>
+        <ul><li>Life-story sessions: be heard</li><li>Meet-ups with students &amp; young people</li><li>Cards, carrom, chess &amp; crafts</li><li>Festivals, book swaps &amp; sunny-day porch chats</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" style="background:var(--saffron-soft)">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:36px">
+      <h2>Start from home. Grow into a club.</h2>
+      <p class="lead">Silver &amp; Strong is hybrid. We begin with online sessions your parents can join from their own sofa, then open our club in South Bangalore. Online members stay part of it all.</p>
+    </div>
+    <div class="three">
+      <article class="card">
+        <div class="pill" style="background:var(--teal);color:#fff">Step 1 · Now</div>
+        <h3>Online support sessions</h3>
+        <ul>
+          <li>Live gentle-exercise and yoga classes</li>
+          <li>Diet and nutrition guidance, including diabetes and BP-friendly eating</li>
+          <li>Health talks and Q&amp;A with doctors and dietitians</li>
+          <li>Online life-story circles and friendly weekly chats</li>
+          <li>Simple: a WhatsApp group and one video link, and we help you set it up for them</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="pill">Step 2 · Next</div>
+        <h3>Meet-ups near you</h3>
+        <ul>
+          <li>Monthly walks and get-togethers in parks and community halls</li>
+          <li>Shared lunches and cooking days</li>
+          <li>Online friends meet in person for the first time</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="pill">Step 3 · Then</div>
+        <h3>Our own club space</h3>
+        <ul>
+          <li>Movement studio, community kitchen and lounge</li>
+          <li>Daily programme, with classes streamed for online members</li>
+          <li>South Bangalore first, around Vijaya Bank Layout</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="wrap">
+    <h2 class="center" style="margin-bottom:36px">Why families choose us</h2>
+    <div class="why">
+      <div><span class="tick">✓</span><p><b>Peace of mind for you</b>A simple update for the family on how your parent is doing, how often they attend, and how their strength is improving, wherever you live.</p></div>
+      <div><span class="tick">✓</span><p><b>Safe, physio-designed training</b>Every member gets a simple check-in with our physiotherapy team, and a programme matched to their body. First-aid ready, with a quiet corner whenever you need one.</p></div>
+      <div><span class="tick">✓</span><p><b>Friends, not just exercise</b>Loneliness hurts health. Regular company is part of the programme.</p></div>
+      <div><span class="tick">✓</span><p><b>Close to home</b>Neighbourhood locations that are easy to reach, with step-free access and clean restrooms.</p></div>
+      <div><span class="tick">✓</span><p><b>Their pace, their choice</b>They can come for a class, for lunch, or just for chai. Nobody is pushed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="wrap">
+    <div class="three two">
+      <article class="card" style="background:var(--saffron-soft)">
+        <div class="ic" aria-hidden="true">📖</div>
+        <h3>Life-story sessions</h3>
+        <p>Everyone has a story worth hearing. In small, friendly circles, members share memories of childhood, work, marriage, migration, festivals and food, guided by a gentle facilitator.</p>
+        <p style="margin:0;color:var(--muted)">Stories can be written down or recorded into a keepsake for your family, if you wish.</p>
+      </article>
+      <article class="card" style="background:var(--leaf-soft)">
+        <div class="ic" aria-hidden="true">🤝</div>
+        <h3>Friends of every age</h3>
+        <p>Students, young professionals and children visit to listen, learn and play. Elders teach recipes, languages and crafts, and young friends help with phones and apps in return.</p>
+        <p style="margin:0;color:var(--muted)">Both sides leave feeling less alone.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="signup">
+  <div class="wrap grid">
+    <div>
+      <h2>Join the waitlist</h2>
+      <p class="lead">Tell us a little about who the sessions are for and how to reach you. We will message you first when online sessions begin and when our first South Bangalore club opens. Early families get the best rates.</p>
+      <p class="lead">Your answers also help us decide the classes, food and fees. Please be honest, there are no wrong answers.</p>
+    </div>
+
+    <form id="signup" novalidate>
+      <div class="formbody">
+        <div class="field">
+          <label for="who">I am signing up…</label>
+          <select id="who" name="who">
+            <option value="parent">for my parent or elder relative</option>
+            <option value="self">for myself (I am 50+)</option>
+            <option value="volunteer">as a younger person who wants to volunteer</option>
+          </select>
+        </div>
+
+        <div class="field" data-req>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+          <div class="err">Please enter your name.</div>
+        </div>
+
+        <div class="field" id="parentNameField">
+          <label for="parentName">Your parent's name <span class="hint">(optional)</span></label>
+          <input type="text" id="parentName" name="parentName">
+        </div>
+
+        <div class="row2">
+          <div class="field" data-req>
+            <label for="phone">Your WhatsApp / mobile number</label>
+            <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="98765 43210" required>
+            <div class="err">Please enter a 10-digit mobile number.</div>
+          </div>
+          <div class="field">
+            <label for="age"><span id="ageLabel">Your parent's age</span> <span class="hint">(optional)</span></label>
+            <input type="text" id="age" name="age" inputmode="numeric" placeholder="e.g. 68">
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field" data-req>
+            <label for="city">City</label>
+            <select id="city" name="city" required>
+              <option value="">Choose…</option>
+              <option>Bangalore</option>
+              <option>Outside Bangalore (we will tell you if we expand)</option>
+            </select>
+            <div class="err">Please choose a city.</div>
+          </div>
+          <div class="field">
+            <label for="area"><span id="areaLabel">Where does your parent live?</span> <span class="hint">(area, optional)</span></label>
+            <input type="text" id="area" name="area" placeholder="e.g. Vijaya Bank Layout, Bilekahalli, Hulimavu">
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field" data-req>
+            <label for="mode">How would they like to join?</label>
+            <select id="mode" name="mode" required>
+              <option value="">Choose…</option>
+              <option value="online">Online from home</option>
+              <option value="in-person">In person at a club</option>
+              <option value="both">Both</option>
+            </select>
+            <div class="err">Please choose an option.</div>
+          </div>
+          <div class="field">
+            <label for="tech">Video calls &amp; WhatsApp</label>
+            <select id="tech" name="tech">
+              <option value="">Choose…</option>
+              <option value="comfortable">Comfortable</option>
+              <option value="some-help">Needs a little help</option>
+              <option value="family-helps">Family helps</option>
+              <option value="none">Not on a smartphone</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="concern">What worries you most? <span class="hint">(optional)</span></label>
+          <select id="concern" name="concern">
+            <option value="">Choose…</option>
+            <option value="loneliness">They are lonely or isolated</option>
+            <option value="inactivity">They are not active enough</option>
+            <option value="weakness-falls">They are getting weak or might fall</option>
+            <option value="diet">They are not eating well</option>
+            <option value="health-condition">Managing diabetes, BP or joint pain</option>
+            <option value="alone-all-day">They are alone all day</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>What would help most? <span class="hint">(tick any)</span></legend>
+          <div class="opts">
+            <label class="opt"><input type="checkbox" name="interests" value="joint-pain"> Gentle exercise for joint or back pain</label>
+            <label class="opt"><input type="checkbox" name="interests" value="independence"> Staying strong &amp; independent</label>
+            <label class="opt"><input type="checkbox" name="interests" value="diet"> Diet &amp; nutrition advice</label>
+            <label class="opt"><input type="checkbox" name="interests" value="health"> Health talks &amp; check-ins</label>
+            <label class="opt"><input type="checkbox" name="interests" value="exercise"> Gentle exercise</label>
+            <label class="opt"><input type="checkbox" name="interests" value="yoga"> Yoga &amp; breathing</label>
+            <label class="opt"><input type="checkbox" name="interests" value="meals"> Healthy meals</label>
+            <label class="opt"><input type="checkbox" name="interests" value="games"> Cards, carrom &amp; chess</label>
+            <label class="opt"><input type="checkbox" name="interests" value="friends"> Making friends</label>
+            <label class="opt"><input type="checkbox" name="interests" value="music"> Music &amp; bhajans</label>
+            <label class="opt"><input type="checkbox" name="interests" value="outings"> Day outings</label>
+            <label class="opt"><input type="checkbox" name="interests" value="life-stories"> Sharing life stories</label>
+            <label class="opt"><input type="checkbox" name="interests" value="intergenerational"> Meeting younger people</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="priceOnline">Online sessions: what monthly fee would feel fair for live classes, diet guidance and weekly circles? <span class="hint">(optional)</span></label>
+          <select id="priceOnline" name="priceOnline">
+            <option value="">Choose…</option>
+            <option value="free-only">I would only join if free</option>
+            <option value="<500">Under ₹500</option>
+            <option value="500-1000">₹500 – ₹1,000</option>
+            <option value="1000-2000">₹1,000 – ₹2,000</option>
+            <option value="2000+">More than ₹2,000</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="price">In person at a club: what monthly fee would feel fair for classes, one meal a day and the lounge? <span class="hint">(optional)</span></label>
+          <select id="price" name="price">
+            <option value="">Choose…</option>
+            <option value="<2000">Under ₹2,000</option>
+            <option value="2000-4000">₹2,000 – ₹4,000</option>
+            <option value="4000-7000">₹4,000 – ₹7,000</option>
+            <option value="7000-12000">₹7,000 – ₹12,000</option>
+            <option value="12000+">More than ₹12,000 (includes 1-on-1 personal training)</option>
+            <option value="pay-per-visit">I would prefer to pay per visit</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything we should know about your parent? <span class="hint">(health needs, diet, language, optional)</span></label>
+          <textarea id="notes" name="notes"></textarea>
+        </div>
+
+        <label class="opt" style="margin-bottom:22px;font-weight:400">
+          <input type="checkbox" id="consent" name="consent" required>
+          <span>I agree to be contacted on WhatsApp or phone about Silver &amp; Strong. I understand this is a waitlist and not a payment.</span>
+        </label>
+        <div class="err" id="consentErr" style="margin:-14px 0 18px">Please tick the box so we can contact you.</div>
+
+        <button class="btn alt" type="submit" style="width:100%">Join the waitlist</button>
+        <p class="fine">We never share your details. Silver &amp; Strong is an elder gym and community club, not a clinic or care home.</p>
+      </div>
+
+      <div class="thanks" id="thanks" role="status" aria-live="polite">
+        <div class="big" aria-hidden="true">🎉</div>
+        <h3>Thank you, <span id="thanksName"></span>!</h3>
+        <p>You are on the founding list for <b id="thanksCity"></b>. We will message you on WhatsApp as soon as we have news.</p>
+        <p>Know someone who would love this? Please share this page with them.</p>
+        <a class="btn" id="shareBtn" href="#">Share on WhatsApp</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px">
+    <h2 class="center" style="margin-bottom:28px">Questions, answered</h2>
+    <details><summary>Can I join from home?</summary><p>Yes. We are starting with online sessions, so you can join live classes, diet guidance and story circles from home. You only need a phone. Our clubs will be in Bangalore. If you are not comfortable with video calls, tell us and we will help you set up.</p></details>
+    <details><summary>Will online members be left out once the clubs open?</summary><p>No. Classes and circles will be streamed from the clubs so online and in-person members take part together.</p></details>
+    <details><summary>Is this a clinic or a care home?</summary><p>No. Silver &amp; Strong is an elder gym and day club for active, independent people. Our goal is a healthy, strong life: building strength, balance and mobility. Our team includes physiotherapists who design and oversee your programme, but we do not run a treatment clinic. For medical treatment, we will point you to trusted partner clinics and work alongside your doctor's advice.</p></details>
+    <details><summary>I have joint pain or diabetes. Can I still join?</summary><p>Usually yes, with your doctor's okay. We start with a check-in with our physiotherapy team, keep every exercise gentle, and adjust to what your body allows. We build strength and keep you healthy; we do not provide rehabilitation, so if you are still recovering from surgery or an injury, please finish that with your doctor or physiotherapist first.</p></details>
+    <details><summary>Do I need to be fit already?</summary><p>Not at all. Every activity can be done seated or at a gentle pace. We start from where you are.</p></details>
+    <details><summary>How much will it cost?</summary><p>We are still deciding, which is why we are asking you. Founding members will get the best rates. Joining the waitlist is free.</p></details>
+    <details><summary>Where exactly will the clubs open?</summary><p>First in South Bangalore, around Vijaya Bank Layout, Bilekahalli and Hulimavu, after we have built the online community. The exact neighbourhoods depend on where most people sign up, so please tell us your area.</p></details>
+    <details><summary>Can my family visit or take part?</summary><p>Yes. Children and grandchildren are welcome at weekend events and festivals.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Silver &amp; Strong · Bangalore</div>
+    <div class="admin" id="admin">
+      <b>Admin view (only you can see this, on this device)</b>
+      <p id="adminCount" style="margin:.4em 0"></p>
+      <button class="btn" type="button" id="csvBtn" style="padding:10px 20px;min-height:44px">Download signups (CSV)</button>
+      <button class="btn" type="button" id="clearBtn" style="padding:10px 20px;min-height:44px;background:#a3261b;margin-left:8px">Clear local data</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   WHERE SIGNUPS GO
+   Leave ENDPOINT empty while prototyping: signups are saved only
+   in this browser (add ?admin to the URL to view/export them).
+   For real collection, paste a URL that accepts a JSON POST
+   (Formspree, Google Apps Script web app, Supabase function...).
+---------------------------------------------------------------- */
+var ENDPOINT = "";
+var STORE_KEY = "silver-strong-signups";
+
+(function(){
+  var $ = function(s){return document.querySelector(s)};
+  var form = $("#signup");
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  function load(){ try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}catch(e){return []} }
+  function save(list){ try{localStorage.setItem(STORE_KEY, JSON.stringify(list))}catch(e){} }
+
+  // Adapt wording when signing up for a parent
+  $("#who").addEventListener("change", function(){
+    var p = this.value === "parent";
+    $("#parentNameField").style.display = p ? "" : "none";
+    $("#ageLabel").textContent = p ? "Your parent's age" : "Your age";
+    $("#areaLabel").textContent = p ? "Where does your parent live?" : "Where do you live?";
+  });
+
+  function validate(){
+    var ok = true;
+    form.querySelectorAll("[data-req]").forEach(function(f){
+      var el = f.querySelector("input,select");
+      var bad = !el.value.trim();
+      if(el.id === "phone"){
+        var digits = el.value.replace(/\D/g,"");
+        bad = !(digits.length === 10 || (digits.length === 12 && digits.indexOf("91") === 0));
+      }
+      f.classList.toggle("invalid", bad);
+      if(bad) ok = false;
+    });
+    var c = $("#consent").checked;
+    $("#consentErr").style.display = c ? "none" : "block";
+    if(!c) ok = false;
+    return ok;
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!validate()){
+      var first = form.querySelector(".invalid, #consentErr[style*='block']");
+      if(first) first.scrollIntoView({behavior:"smooth",block:"center"});
+      return;
+    }
+    var fd = new FormData(form);
+    var rec = {
+      submitted_at: new Date().toISOString(),
+      signing_up_for: fd.get("who"),
+      name: fd.get("name").trim(),
+      parent_name: (fd.get("parentName")||"").trim(),
+      concern: fd.get("concern") || "",
+      phone: fd.get("phone").replace(/\D/g,"").slice(-10),
+      age: (fd.get("age")||"").trim(),
+      city: fd.get("city"),
+      area: (fd.get("area")||"").trim(),
+      interests: fd.getAll("interests").join("; "),
+      join_mode: fd.get("mode"),
+      tech_comfort: fd.get("tech") || "",
+      price_online: fd.get("priceOnline") || "",
+      price_band: fd.get("price"),
+      notes: (fd.get("notes")||"").trim(),
+      page: location.href.split("#")[0]
+    };
+    var list = load(); list.push(rec); save(list);
+    if(ENDPOINT){
+      // text/plain + no-cors avoids the CORS preflight that Google Apps Script web apps reject
+      fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(rec)}).catch(function(){});
+    }
+    $("#thanksName").textContent = rec.name.split(" ")[0];
+    $("#thanksCity").textContent = rec.city.indexOf("Outside")===0 ? "your city (online sessions)" : "Bangalore";
+    form.classList.add("done");
+    $("#thanks").classList.add("show");
+    $("#thanks").scrollIntoView({behavior:"smooth",block:"center"});
+  });
+
+  $("#shareBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    var msg = "Have a look at Silver & Strong, a new club for seniors with gentle exercise, healthy food and friends. " + location.href.split("#")[0];
+    window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  });
+
+  // Admin view
+  if(/[?&]admin\b/.test(location.search)){
+    var box = $("#admin"); box.classList.add("show");
+    var upd = function(){ $("#adminCount").textContent = load().length + " signup(s) stored in this browser."; };
+    upd();
+    $("#csvBtn").addEventListener("click", function(){
+      var list = load(); if(!list.length) return;
+      var cols = Object.keys(list[0]);
+      var esc = function(v){return '"' + String(v==null?"":v).replace(/"/g,'""') + '"'};
+      var csv = [cols.join(",")].concat(list.map(function(r){return cols.map(function(c){return esc(r[c])}).join(",")})).join("\n");
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+      a.download = "silver-strong-signups.csv"; a.click();
+    });
+    $("#clearBtn").addEventListener("click", function(){
+      if(this.dataset.sure){ save([]); upd(); delete this.dataset.sure; this.textContent="Clear local data"; }
+      else { this.dataset.sure = 1; this.textContent="Click again to confirm"; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
